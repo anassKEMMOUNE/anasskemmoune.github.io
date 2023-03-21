@@ -32,15 +32,44 @@
         <input type="submit" value="Login">
     </form>
     <form class ="register_form" action="" method = "post">
-    <input type="text">
     <label for="user_reg">Username</label>
-        <input type="text" name="user_reg">
+        <input type="text" name="user_reg" required>
         <label for="email_reg">Email</label>
-        <input type="email" name="email_reg" id="email_reg">
+
+        <input type="email" name="email_reg" id="email_reg" required>
         <label for="pass_reg">Password</label>
-        <input type="password" name="pass_reg" id="pass_reg">
+
+        <input type="password" name="pass_reg" id="pass_reg" required>
+
         <input type="submit" value="Register">
     </form>
+    <?php 
+    //include __DIR__.'/Includes/dbh.inc.php';
+    $mysqli = new mysqli("localhost","root","","todolistdb");
+
+if ($mysqli -> connect_error) {
+  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  exit();
+}
+    if (array_key_exists("user_reg",$_POST) && array_key_exists("email_reg",$_POST) && array_key_exists("pass_reg",$_POST)){
+        // calculate the new id  
+        $old_id_query = "SELECT MAX(user_id) FROM user";
+        $res = $mysqli -> query($old_id_query);
+        $ro = $res -> fetch_array(MYSQLI_NUM);
+        $new_id = $ro[0]+1;
+        echo $new_id;
+        echo $_POST["user_reg"];
+        $a = $_POST['user_reg'];
+        $b = $_POST['email_reg'];
+        $c = $_POST['pass_reg'];
+        var_dump($a);
+        $add_user_query = "INSERT INTO user VALUES ($new_id,'$a','$b','$c')";
+        $result = $mysqli -> query($add_user_query);
+
+
+    }
+   
+    ?>
 </body>
 <script>
 
