@@ -8,7 +8,7 @@
     <title>Add Task</title>
 </head>
 <body>
-<form class="form m-5" method="POST" action="add.inc.php">
+<form class="form m-5" method="POST" action="Includes/add.inc.php">
 
         <div class="form-floating m-3 w-25">
             <input type="text" id="task" name="task" class="form-control" placeholder="Task" value="">

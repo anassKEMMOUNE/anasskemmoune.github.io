@@ -43,18 +43,15 @@
 
         <input type="submit" value="Register">
     </form>
+    
     <?php 
-    //include __DIR__.'/Includes/dbh.inc.php';
-    $mysqli = new mysqli("localhost","root","","todolistdb");
 
-if ($mysqli -> connect_error) {
-  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-  exit();
-}
-    if (array_key_exists("user_reg",$_POST) && array_key_exists("email_reg",$_POST) && array_key_exists("pass_reg",$_POST)){
+    include_once 'dbh.inc.php';
+
+    if (array_key_exists("user_reg", $_POST) && array_key_exists("email_reg", $_POST) && array_key_exists("pass_reg", $_POST)){
         // calculate the new id  
         $old_id_query = "SELECT MAX(user_id) FROM user";
-        $res = $mysqli -> query($old_id_query);
+        $res = $conn -> query($old_id_query);
         $ro = $res -> fetch_array(MYSQLI_NUM);
         $new_id = $ro[0]+1;
         echo $new_id;
@@ -64,10 +61,11 @@ if ($mysqli -> connect_error) {
         $c = $_POST['pass_reg'];
         var_dump($a);
         $add_user_query = "INSERT INTO user VALUES ($new_id,'$a','$b','$c')";
-        $result = $mysqli -> query($add_user_query);
-
+        $result = $conn -> query($add_user_query);
 
     }
+
+    $conn -> close();
    
     ?>
 </body>
