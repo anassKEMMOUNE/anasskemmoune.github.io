@@ -27,9 +27,14 @@
         }
         else {
             // Adding the task
-            $rowCount++;
-            if ($result = $conn -> query("INSERT INTO task (task_id, task_name, task_description, due_date, status) VALUES ('$rowCount', '$task', '$taskDescription', '$dueDate', '$status')")) {
-                if ($result = $conn -> query("INSERT INTO user_task (user_id, task_id) VALUES ('$user', '$rowCount')")) {
+            
+            if ($result0 = $conn -> query("SELECT MAX(task_id) FROM task")) {
+                $row = $result0 -> fetch_assoc();
+                $max_id = $row['MAX(task_id)'] + 1;
+            }
+            
+            if ($result = $conn -> query("INSERT INTO task (task_id, task_name, task_description, due_date, status) VALUES ('$max_id', '$task', '$taskDescription', '$dueDate', '$status')")) {
+                if ($result = $conn -> query("INSERT INTO user_task (user_id, task_id) VALUES ('$user', '$max_id')")) {
                     header("Location: ../main.php?success=true");
                 }
                 else {

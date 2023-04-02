@@ -43,10 +43,10 @@
 
         <input type="submit" value="Register">
     </form>
-    
+
     <?php 
 
-    include_once 'dbh.inc.php';
+    include_once __DIR__.'/Includes/dbh.inc.php';
 
     if (array_key_exists("user_reg", $_POST) && array_key_exists("email_reg", $_POST) && array_key_exists("pass_reg", $_POST)){
         // calculate the new id  
