@@ -11,6 +11,26 @@
 
     <title>ToDoList</title>
 </head>
+<style>
+    .shake:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+ }
+
+ @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+ }
+</style>
 <body>
     <div class="container m-5 p-2 rounded mx-auto bg-light shadow border position-relative h-75">
 
@@ -45,6 +65,7 @@
         }
 
         // checking if the task table is empty
+
         if ($isEmpty = $conn -> query("SELECT * from task")) {
             $rowCount = mysqli_num_rows($isEmpty);
             if ($rowCount != 0) {
@@ -61,7 +82,7 @@
                 <div class="col col-md-auto d-flex flex-column justify-content-end">
                     <div class="d-flex flex-row align-items-center justify-content-center">
                         <button class="border-0 bg-light m-0 p-0 px-2"><i class="fa fa-pencil text-primary btn m-0 p-0" title="Edit todo" onclick="window.location.href='edit_task.php?edit_task=<?php echo $row['task_id'];?>';"></i></button>
-                        <button class="border-0 bg-light m-0 p-0 px-2"><i class="fa fa-trash-o text-danger btn m-0 p-0" title="Delete todo" onclick="window.location.href='main.php?del_task=<?php echo $row['task_id'];?>';"></i></button>
+                        <button class="border-0 bg-light m-0 p-0 px-2"><i class="fa fa-trash-o text-danger btn m-0 p-0 shake" title="Delete todo" onclick="window.location.href='main.php?del_task=<?php echo $row['task_id'];?>';"></i></button>
                     </div>
                     <div class="col-auto d-flex align-items-center justify-content-center pr-2">
                         <i class="fa fa-info-circle my-2 px-2 text-black-50 btn"title=<?php echo $row['task_description'] ?>></i>
