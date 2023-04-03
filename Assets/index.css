@@ -1,0 +1,39 @@
+body{
+    width : 70%;
+    margin : auto !important;
+}
+.pres{
+    text-align: center;
+    margin-top : 50px;
+    margin-bottom : 170px; 
+}
+.log_btn_grp{
+    text-align: center;
+}
+.login_form{
+    display: none;
+    position:fixed;
+    width : 50%;
+    flex-direction: column;
+    justify-content: center; 
+    background-color: gray;
+    top : 30%;
+    padding : 20px;
+    right : 25%;
+    left : 25%;
+}
+.register_form{
+    display: none;
+    position:fixed;
+    width : 50%;
+    flex-direction: column;
+    justify-content: center; 
+    background-color: gray;
+    top : 30%;
+    padding : 20px;
+    right : 25%;
+    left : 25%;
+}
+.exit_button{
+width:fit-content;
+}

@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="Assets/main_style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>    
+
     <title>ToDoList</title>
 </head>
 <body>
+
     <div class="container m-5 p-2 rounded mx-auto bg-light shadow border position-relative h-75">
         <!-- App title section -->
         <div class="row m-1 p-4">
@@ -25,7 +27,7 @@
         <!-- Tasks -->
         <div class="container d-flex justify-content-center">
             <div class="d-flex justify-content-center w-75 border rounded p-1">
-                <div class="col col-md-auto d-flex justify-content-center align-items-center">
+                <div class="col col-md-auto d-flex justify-content-center align-items-center min">
                     <button class="border-0 bg-light"><i class="fa fa-minus-square-o fa-2x text-success" aria-hidden="true"></i></button>
                 </div>
                 <div class="col fs-4 text-start d-flex align-items-center">Buy groceries for next week</div>
@@ -43,4 +45,19 @@
         </div>
     </div>
 </body>
+ <script>
+    $(".min button i").on("mouseenter", function(){
+        $(".min button i").removeClass("fa-minus-square-o");
+        $(".min button i").addClass("fa-check-square");
+
+    });
+    $(".min button i").on("mouseleave", function(){
+        $(".min button i").removeClass("fa-check-square");
+        $(".min button i").addClass("fa-minus-square-o");
+
+    });
+
+
+ </script>
+
 </html>
