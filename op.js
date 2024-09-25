@@ -1,1 +1,1 @@
-document.querySelector("html").style.opacity = "0";
+document.querySelector("html").style.opacity = "1";
